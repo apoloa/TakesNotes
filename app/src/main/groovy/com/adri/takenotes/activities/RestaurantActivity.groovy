@@ -1,11 +1,10 @@
 package com.adri.takenotes.activities
 
+import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.ArrayAdapter
-import android.widget.ListAdapter
 import android.widget.ListView
 import com.adri.takenotes.R
 import com.adri.takenotes.fragment.NewTableClientFragment
@@ -14,10 +13,11 @@ import com.adri.takenotes.model.Restaurant
 import com.arasthel.swissknife.SwissKnife
 import com.arasthel.swissknife.annotations.InjectView
 import com.arasthel.swissknife.annotations.OnClick
+import com.arasthel.swissknife.annotations.OnItemClick
 
-class TableClientsActivity extends AppCompatActivity implements NewTableClientFragment.OnTableClientAddedListener {
+class RestaurantActivity extends AppCompatActivity implements NewTableClientFragment.OnTableClientAddedListener {
 
-    final String TAG = TableClientsActivity.class.getCanonicalName()
+    final String TAG = RestaurantActivity.class.getCanonicalName()
     private Restaurant restaurant
     ArrayAdapter<ClientTable> adapter
 
@@ -29,10 +29,16 @@ class TableClientsActivity extends AppCompatActivity implements NewTableClientFr
         startNewTableDialog()
     }
 
+    @OnItemClick(R.id.list_table_clients)
+    void tableClientsClick(int position){
+        ClientTable table = restaurant.getTables().get(position)
+        startDetailTableClient(table)
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_table_clients)
+        setContentView(R.layout.activity_restaurant)
         SwissKnife.inject(this)
 
         restaurant = new Restaurant()
@@ -50,10 +56,17 @@ class TableClientsActivity extends AppCompatActivity implements NewTableClientFr
         dialog.show(getFragmentManager(),null)
     }
 
+    void startDetailTableClient(ClientTable table){
+        Intent tableClientIntent = new Intent(this, TableClientActivity.class)
+        tableClientIntent.putExtra(TableClientActivity.EXTRA_TABLE, (Serializable) table)
+        startActivity(tableClientIntent)
+    }
+
     @Override
     void onTableAddedListener(String name) {
         restaurant.addNewTable(name)
         adapter.notifyDataSetChanged()
+        Log.d(TAG, "Added new Table")
     }
 
     @Override
