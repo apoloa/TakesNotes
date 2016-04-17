@@ -22,6 +22,9 @@ class DishView extends CardView {
     @InjectView(R.id.title_dish)
     TextView titleDish
 
+    @InjectView(R.id.dish_price)
+    TextView priceDish
+
     @InjectView(R.id.description_dish)
     TextView descriptionDish
 
@@ -108,6 +111,10 @@ class DishView extends CardView {
                 view.setAlpha(1.0f)
             }
         }
+    }
+
+    void setPrice(Float price){
+        priceDish.setText(price + " €")
     }
 
     void setTitleDish(String title) {

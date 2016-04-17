@@ -77,6 +77,7 @@ class DishFragment extends Fragment{
             dishView.setDescriptionDish(dish.description)
             dishView.setTitleDish(dish.name)
             dishView.setAllergens(dish.allergens)
+            dishView.setPrice(dish.price)
         }
     }
 
