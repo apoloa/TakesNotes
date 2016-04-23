@@ -1,27 +1,54 @@
 package com.adri.takenotes.model
 
-import android.os.Parcel
-import android.os.Parcelable
-
-class ClientTable implements Serializable{
+class ClientTable implements Serializable {
 
     int numberTable
     String name
     LinkedList<Dish> dishes
 
-    public ClientTable(int numberTable, String name){
+    public ClientTable(int numberTable, String name) {
         this.numberTable = numberTable
         this.name = name
-        dishes = new LinkedList<>();
-        dishes.add(new Dish(name: "Lentejas", description: "Plato de casa de la abuela", allergens: [AllergensEnums.ALTRAMUCES,AllergensEnums.CRUSTACEOS], price: 2f, quantity: 1))
-        dishes.add(new Dish(name: "Sopa", description: "Plato que le encanta a la Patri", allergens: [], price: 1f, quantity: 5))
+        dishes = new LinkedList<>()
+    }
+
+    boolean removeDish(int id) {
+        Dish founded
+        for (Dish d : dishes) {
+            if (d.id == id) {
+                founded = d
+                break
+            }
+        }
+        if (!founded) {
+            return false
+        } else {
+            dishes.remove(founded)
+            return true
+        }
+    }
+
+    void addDish(Dish dish, boolean replace) {
+        for (Dish d : dishes) {
+            if (d.id == dish.id) {
+                if(!replace){
+                    d.quantity += dish.quantity
+                    d.additions += " " + dish.additions
+                }else{
+                    d.quantity = dish.quantity
+                    d.additions = " " + dish.additions
+                }
+
+                return
+            }
+        }
+        dishes.add(dish)
     }
 
     @Override
     String toString() {
         return numberTable + " - " + name.toString()
     }
-
 
 
 }

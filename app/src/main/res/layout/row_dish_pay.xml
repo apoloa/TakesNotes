@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/title_dish_pay"
+        android:text="@string/example_name_dish"
+        />
+
+    <TextView
+        android:gravity="end"
+        android:id="@+id/price_dish_pay"
+        android:text="@string/example_price_dish" />
+
+    <TextView
+        android:paddingRight="@dimen/text_margin_dialog"
+        android:text="@string/type_money" />
+
+    <TextView
+        android:paddingRight="@dimen/text_margin_dialog"
+        android:text="@string/multiplier" />
+
+    <TextView
+        android:gravity="end"
+        android:paddingRight="@dimen/text_margin_dialog"
+        android:id="@+id/quantity_dish_pay"
+        android:text="@string/example_quantity_dish" />
+
+    <TextView
+        android:gravity="end"
+        android:id="@+id/total_price_dish"
+        android:text="@string/example_dish_price_quantity" />
+
+    <TextView
+        android:gravity="end"
+        android:text="@string/type_money" />
+
+</TableRow>

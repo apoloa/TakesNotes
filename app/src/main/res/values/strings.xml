@@ -1,10 +1,28 @@
 <resources>
-    <string name="app_name">TakeNotes</string>
+    <string name="app_name">Take Notes</string>
     <string name="say_hello_world">Say Hello World</string>
     <string name="title_activity_settings">Settings</string>
     <string name="name">Nombre</string>
     <string name="create">Crear</string>
     <string name="cancel">Cancelar</string>
     <string name="new_table">Nueva Mesa</string>
+    <string name="title_params_dish">Plato Param</string>
+    <string name="type_money">€</string>
+    <string name="multiplier">X</string>
+    <string name="example_quantity_dish">6</string>
+    <string name="example_price_dish">5</string>
+    <string name="example_name_dish">Lentejas</string>
+    <string name="example_dish_price_quantity">30</string>
+    <string name="total">Total Factura</string>
+    <string name="dish">Plato</string>
+    <string name="quantity">C.</string>
+    <string name="price">P.</string>
+    <string name="total_dish">T.</string>
+    <string name="dish_image">Imagen del plato</string>
+    <string name="dish_name_example">Callos a la Madrileña</string>
+    <string name="dish_description">Los callos a la madrileña son una de las recetas más tradicionales de la comunidad autónoma de Madrid.</string>
+    <string name="price_dish_example">23€</string>
+    <string name="quantity_dish">Cantidad:</string>
+    <string name="pay">Pagar</string>
 
 </resources>

@@ -3,6 +3,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="@dimen/activity_horizontal_margin"
     card_view:cardCornerRadius="10dp"
     card_view:cardElevation="10dp">
@@ -12,22 +13,22 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:contentDescription="@string/dish_image"
             android:id="@+id/image_dish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-
             android:alpha="0.50"
             android:cropToPadding="true"
             android:maxHeight="150dp"
             android:scaleType="fitXY"
-            android:src="@drawable/callos_a_la_madrilena" />
+            tools:src="@drawable/callos_a_la_madrilena" />
         <TextView
             android:id="@+id/title_dish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/activity_horizontal_margin"
-            android:text="Callos a la Madrileña"
+            android:text="@string/dish_name_example"
             android:layout_alignBottom="@+id/image_dish"
             android:textAppearance="?android:textAppearanceLarge"
             android:textStyle="bold" />
@@ -38,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/image_dish"
             android:padding="@dimen/text_margin"
-            android:text="Los callos a la madrileña son una de las recetas más tradicionales de la comunidad autónoma de Madrid." />
+            android:text="@string/dish_description" />
 
         <LinearLayout
             android:id="@+id/allergens_first_group"
@@ -171,6 +172,27 @@
                 android:layout_weight="1"/>
         </LinearLayout>
         <TextView
+            android:id="@+id/text_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/allergens_second_group"
+            android:text="@string/quantity_dish"
+            android:paddingTop="@dimen/text_margin"
+            android:paddingBottom="@dimen/text_margin"
+            android:textColor="@color/colorPrimary"
+            android:paddingLeft="@dimen/text_margin"/>
+        <TextView
+            android:id="@+id/quantity_dishes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/example_quantity_dish"
+            android:layout_below="@+id/allergens_second_group"
+            android:paddingTop="@dimen/text_margin"
+            android:paddingBottom="@dimen/text_margin"
+            android:paddingLeft="@dimen/test_margin_minimum"
+            android:textColor="@color/colorPrimary"
+            android:layout_toRightOf="@id/text_quantity"/>
+        <TextView
             android:id="@+id/dish_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -178,7 +200,7 @@
             android:padding="@dimen/text_margin"
             android:gravity="end"
             android:textColor="@color/colorPrimary"
-            android:text="23€"/>
+            android:text="@string/price_dish_example"/>
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

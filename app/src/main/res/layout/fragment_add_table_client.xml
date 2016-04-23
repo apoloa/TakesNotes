@@ -53,7 +53,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/colorAccent"
             android:textColor="@color/colorTextPrimary"
-            android:text="Cancelar"/>
+            android:text="@string/cancel"/>
     </LinearLayout>
 
 

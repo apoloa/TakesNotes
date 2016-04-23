@@ -1,6 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1"
+    android:padding="@dimen/text_size">
 
-</LinearLayout>
+    <TableRow>
+
+        <TextView
+            android:text="@string/dish"
+            android:textAppearance="?android:textAppearance"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size" />
+
+        <TextView
+            android:gravity="end"
+            android:text="@string/quantity"
+            android:textAppearance="?android:textAppearance"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size" />
+
+        <TextView
+            android:paddingRight="@dimen/text_margin_dialog"
+            android:text="" />
+
+        <TextView
+            android:paddingRight="@dimen/text_margin_dialog"
+            android:text="" />
+
+        <TextView
+            android:paddingRight="@dimen/text_margin_dialog"
+            android:text="@string/price"
+            android:textAppearance="?android:textAppearance"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size" />
+
+        <TextView
+            android:text="@string/total_dish"
+            android:textAppearance="?android:textAppearance"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size" />
+
+
+    </TableRow>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"/>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"/>
+
+    <TableRow>
+        <TextView
+            android:text="@string/total"
+            android:textAppearance="?android:textAppearance"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size" />
+        <TextView />
+        <TextView />
+        <TextView />
+        <TextView />
+        <TextView
+            android:id="@+id/pay_total_price"
+            android:gravity="end"
+            android:text="@string/example_dish_price_quantity"
+            android:textAppearance="?android:textAppearance"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size" />
+        <TextView
+            android:gravity="end"
+            android:text="@string/type_money" />
+    </TableRow>
+
+
+</TableLayout>

@@ -12,7 +12,7 @@
     </FrameLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/button_add_dish"
+        android:id="@+id/btn_add_dish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
@@ -20,7 +20,7 @@
         android:src="@drawable/add"/>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/button_pay"
+        android:id="@+id/btn_pay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"

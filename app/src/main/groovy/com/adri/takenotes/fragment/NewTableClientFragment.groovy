@@ -10,10 +10,12 @@ import com.adri.takenotes.R
 import com.arasthel.swissknife.SwissKnife
 import com.arasthel.swissknife.annotations.InjectView
 import com.arasthel.swissknife.annotations.OnClick
+import groovy.transform.CompileStatic
 
-import java.lang.ref.WeakReference;
+import java.lang.ref.WeakReference
 
-class NewTableClientFragment extends DialogFragment{
+@CompileStatic
+class NewTableClientFragment extends DialogFragment {
 
     WeakReference<OnTableClientAddedListener> listener
 
@@ -21,12 +23,12 @@ class NewTableClientFragment extends DialogFragment{
     TextInputEditText nameTable
 
     @OnClick(R.id.btn_create_new_table_client)
-    void create(){
-        println(nameTable.text);
-        if(nameTable.text.length() <= 0){
+    void create() {
+        println(nameTable.text)
+        if (nameTable.text.length() <= 0) {
             nameTable.setError("La tabla requiere un nombre")
-        }else{
-            if(listener != null && listener.get() != null){
+        } else {
+            if (listener != null && listener.get() != null) {
                 listener.get().onTableAddedListener(nameTable.text.toString())
                 dismiss()
             }
@@ -35,8 +37,8 @@ class NewTableClientFragment extends DialogFragment{
     }
 
     @OnClick(R.id.btn_cancel_new_table_client)
-    void cancel(){
-        if(listener != null && listener.get() != null) {
+    void cancel() {
+        if (listener != null && listener.get() != null) {
             listener.get().onTableCancelListener()
             dismiss()
         }
@@ -51,23 +53,19 @@ class NewTableClientFragment extends DialogFragment{
 
         dialog.setView(dialogView)
 
-        //dialog.setTitle(R.string.new_table);
-
-        SwissKnife.inject(this, dialogView);
+        SwissKnife.inject(this, dialogView)
 
         return dialog.create()
 
     }
 
-    void setListener(OnTableClientAddedListener listener){
+    void setListener(OnTableClientAddedListener listener) {
         this.listener = new WeakReference<>(listener)
     }
 
-    interface OnTableClientAddedListener{
+    interface OnTableClientAddedListener {
         void onTableAddedListener(String name)
         void onTableCancelListener()
     }
-
-
 }
 

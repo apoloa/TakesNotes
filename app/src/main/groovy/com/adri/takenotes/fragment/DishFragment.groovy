@@ -1,7 +1,10 @@
 package com.adri.takenotes.fragment
 
 import android.app.Fragment
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -15,8 +18,10 @@ import com.adri.takenotes.model.Dish
 import com.adri.takenotes.views.DishView
 import com.arasthel.swissknife.SwissKnife
 import com.arasthel.swissknife.annotations.InjectView
+import groovy.transform.CompileStatic
 
-class DishFragment extends Fragment{
+@CompileStatic
+class DishFragment extends Fragment {
 
     final static String ARG_TABLE_CLIENT = "Dishs"
 
@@ -30,7 +35,7 @@ class DishFragment extends Fragment{
      * @param clientTable Numero de Tabla
      * @return Fragment
      */
-    static DishFragment newInstance(LinkedList<Dish> dishes){
+    static DishFragment newInstance(LinkedList<Dish> dishes) {
         DishFragment fragment = new DishFragment()
 
         Bundle bundle = new Bundle()
@@ -42,7 +47,7 @@ class DishFragment extends Fragment{
     @Override
     void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState)
-        if(getArguments() != null){
+        if (getArguments() != null) {
             dishes = (LinkedList<Dish>) getArguments().getSerializable(ARG_TABLE_CLIENT)
 
         }
@@ -52,14 +57,18 @@ class DishFragment extends Fragment{
     View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState)
 
-        def root = inflater.inflate(R.layout.fragment_list_dish,container, false);
+        def root = inflater.inflate(R.layout.fragment_list_dish, container, false)
 
-        SwissKnife.inject(this,root)
-        listDishes.setLayoutManager(new LinearLayoutManager(getActivity()));
-        listDishes.setItemAnimator(new DefaultItemAnimator());
-        listDishes.swapAdapter(new DishAdapter(dishes),false)
+        SwissKnife.inject(this, root)
+        listDishes.setLayoutManager(new LinearLayoutManager(getActivity()))
+        listDishes.setItemAnimator(new DefaultItemAnimator())
 
+        prepareDish()
         return root
+    }
+
+    void prepareDish(){
+        listDishes.swapAdapter(new DishAdapter(dishes), false)
     }
 
     protected class DishViewHolder extends RecyclerView.ViewHolder {
@@ -69,24 +78,36 @@ class DishFragment extends Fragment{
         DishViewHolder(View itemView) {
             super(itemView)
 
-            dishView = (DishView) itemView
+            dishView = itemView as DishView
         }
 
-        public void bindDish(Dish dish){
+        public void bindDish(Dish dish) {
 
             dishView.setDescriptionDish(dish.description)
             dishView.setTitleDish(dish.name)
             dishView.setAllergens(dish.allergens)
             dishView.setPrice(dish.price)
+            dishView.setQuantity(dish.quantity)
+            dishView.setImageDish(dish.urlImage)
+
+
+            dishView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ParamsDishFragment paramsDishFragment = ParamsDishFragment.newInstance(dish.getClone())
+                    paramsDishFragment.setListener(getActivity() as ParamsDishFragment.OnParamsDishListener)
+                    paramsDishFragment.show(getFragmentManager(),null)
+                }
+            })
         }
     }
 
-    protected class DishAdapter extends RecyclerView.Adapter<DishViewHolder>{
+    protected class DishAdapter extends RecyclerView.Adapter<DishViewHolder> {
 
-        private List<Dish> dishs;
+        private List<Dish> dishs
 
-        public DishAdapter(List<Dish> dishs){
-            super();
+        public DishAdapter(List<Dish> dishs) {
+            super()
             this.dishs = dishs
         }
 
